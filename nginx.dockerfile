@@ -1,6 +1,7 @@
-FROM nginx
-COPY ./conf/nginx.conf /etc/nginx/nginx.conf
-COPY ./content/index.html /usr/share/nginx/html/index.html
+FROM nginx:alpine
+COPY ./html /usr/share/nginx/html
+COPY ./nginx /etc/nginx
+COPY ./cert /cert
 EXPOSE 80 443
 ENTRYPOINT ["nginx"]
 CMD ["-g", "daemon off;"]
